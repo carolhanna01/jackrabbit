@@ -1,0 +1,152 @@
+diff --git a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java
+index 31f4268f1..109a73536 100644
+--- a/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java
++++ b/jackrabbit-jcr-commons/src/main/java/org/apache/jackrabbit/util/Text.java
+@@ -209,13 +209,28 @@ public class Text {
+     }
+ 
+     /**
+-     * Replaces illegal XML characters in the given string by their corresponding
+-     * predefined entity references.
++     * Replaces XML characters in the given string that might need escaping
++     * as XML text or attribute
+      *
+      * @param text text to be escaped
+      * @return a string
+      */
+     public static String encodeIllegalXMLCharacters(String text) {
++        return encodeMarkupCharacters(text, false);
++    }
++
++    /**
++     * Replaces HTML characters in the given string that might need escaping
++     * as HTML text or attribute
++     *
++     * @param text text to be escaped
++     * @return a string
++     */
++    public static String encodeIllegalHTMLCharacters(String text) {
++        return encodeMarkupCharacters(text, true);
++    }
++
++    private static String encodeMarkupCharacters(String text, boolean isHtml) {
+         if (text == null) {
+             throw new IllegalArgumentException("null argument");
+         }
+@@ -250,7 +265,7 @@ public class Text {
+             } else if (ch == '"') {
+                 buf.append("&quot;");
+             } else if (ch == '\'') {
+-                buf.append("&apos;");
++                buf.append(isHtml ? "&#39;" : "&apos;");
+             }
+         }
+         if (buf == null) {
+diff --git a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
+index 0bb52ba38..1375aff26 100644
+--- a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
++++ b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
+@@ -195,4 +195,11 @@ public class TextTest extends TestCase {
+         assertEquals("local\"name", Text.escapeIllegalJcrChars("local\"name"));
+     }
+ 
++    public void testEscapeXML() {
++        assertEquals("&amp;&lt;&gt;&apos;&quot;", Text.encodeIllegalXMLCharacters("&<>'\""));
++    }
++
++    public void testEscapeHTML() {
++        assertEquals("&amp;&lt;&gt;&#39;&quot;", Text.encodeIllegalHTMLCharacters("&<>'\""));
++    }
+ }
+diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/DirListingExportHandler.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/DirListingExportHandler.java
+index dc3516b21..73fdfbe0f 100644
+--- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/DirListingExportHandler.java
++++ b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/DirListingExportHandler.java
+@@ -146,14 +146,14 @@ public class DirListingExportHandler implements IOHandler, PropertyHandler {
+                 String repURL = rep.getDescriptor(Repository.REP_VENDOR_URL_DESC);
+                 String repVersion = rep.getDescriptor(Repository.REP_VERSION_DESC);
+                 writer.print("<html><head><title>");
+-                writer.print(repName);
++                writer.print(Text.encodeIllegalHTMLCharacters(repName));
+                 writer.print(" ");
+-                writer.print(repVersion);
++                writer.print(Text.encodeIllegalHTMLCharacters(repVersion));
+                 writer.print(" ");
+-                writer.print(item.getPath());
++                writer.print(Text.encodeIllegalHTMLCharacters(item.getPath()));
+                 writer.print("</title></head>");
+                 writer.print("<body><h2>");
+-                writer.print(item.getPath());
++                writer.print(Text.encodeIllegalHTMLCharacters(item.getPath()));
+                 writer.print("</h2><ul>");
+                 writer.print("<li><a href=\"..\">..</a></li>");
+                 if (item.isNode()) {
+@@ -162,21 +162,21 @@ public class DirListingExportHandler implements IOHandler, PropertyHandler {
+                         Node child = iter.nextNode();
+                         String label = Text.getName(child.getPath());
+                         writer.print("<li><a href=\"");
+-                        writer.print(Text.escape(label));
++                        writer.print(Text.encodeIllegalHTMLCharacters(Text.escape(label)));
+                         if (child.isNode()) {
+                             writer.print("/");
+                         }
+                         writer.print("\">");
+-                        writer.print(Text.encodeIllegalXMLCharacters(label));
++                        writer.print(Text.encodeIllegalHTMLCharacters(label));
+                         writer.print("</a></li>");
+                     }
+                 }
+                 writer.print("</ul><hr size=\"1\"><em>Powered by <a href=\"");
+-                writer.print(repURL);
++                writer.print(Text.encodeIllegalHTMLCharacters(repURL));
+                 writer.print("\">");
+-                writer.print(repName);
++                writer.print(Text.encodeIllegalHTMLCharacters(repName));
+                 writer.print("</a> version ");
+-                writer.print(repVersion);
++                writer.print(Text.encodeIllegalHTMLCharacters(repVersion));
+                 writer.print("</em></body></html>");
+             } catch (RepositoryException e) {
+                 // should not occur
+@@ -210,14 +210,14 @@ public class DirListingExportHandler implements IOHandler, PropertyHandler {
+                 String repURL = rep.getDescriptor(Repository.REP_VENDOR_URL_DESC);
+                 String repVersion = rep.getDescriptor(Repository.REP_VERSION_DESC);
+                 writer.print("<html><head><title>");
+-                writer.print(repName);
++                writer.print(Text.encodeIllegalHTMLCharacters(repName));
+                 writer.print(" ");
+-                writer.print(repVersion);
++                writer.print(Text.encodeIllegalHTMLCharacters(repVersion));
+                 writer.print(" ");
+-                writer.print(resource.getResourcePath());
++                writer.print(Text.encodeIllegalHTMLCharacters(resource.getResourcePath()));
+                 writer.print("</title></head>");
+                 writer.print("<body><h2>");
+-                writer.print(resource.getResourcePath());
++                writer.print(Text.encodeIllegalHTMLCharacters(resource.getResourcePath()));
+                 writer.print("</h2><ul>");
+                 writer.print("<li><a href=\"..\">..</a></li>");
+                 DavResourceIterator iter = resource.getMembers();
+@@ -225,17 +225,17 @@ public class DirListingExportHandler implements IOHandler, PropertyHandler {
+                     DavResource child = iter.nextResource();
+                     String label = Text.getName(child.getResourcePath());
+                     writer.print("<li><a href=\"");
+-                    writer.print(child.getHref());
++                    writer.print(Text.encodeIllegalHTMLCharacters(child.getHref()));
+                     writer.print("\">");
+-                    writer.print(Text.encodeIllegalXMLCharacters(label));
++                    writer.print(Text.encodeIllegalHTMLCharacters(label));
+                     writer.print("</a></li>");
+                 }
+                 writer.print("</ul><hr size=\"1\"><em>Powered by <a href=\"");
+-                writer.print(repURL);
++                writer.print(Text.encodeIllegalHTMLCharacters(repURL));
+                 writer.print("\">");
+-                writer.print(repName);
++                writer.print(Text.encodeIllegalHTMLCharacters(repName));
+                 writer.print("</a> version ");
+-                writer.print(repVersion);
++                writer.print(Text.encodeIllegalHTMLCharacters(repVersion));
+                 writer.print("</em></body></html>");
+             } catch (RepositoryException e) {
+                 // should not occur

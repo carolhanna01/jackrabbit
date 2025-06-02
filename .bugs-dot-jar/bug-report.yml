@@ -1,0 +1,176 @@
+rss:
+  '@version': '0.92'
+  channel:
+    build-info:
+      build-date: 22-06-2022
+      build-number: '820010'
+      version: 8.20.10
+    description: This file is an XML representation of an issue
+    item:
+      assignee:
+        '#text': Julian Reschke
+        '@username': reschke
+      attachments: null
+      comments:
+        comment:
+        - '#text': '<p>When generating a directory listing, the "DirListingExportHandler"
+            places the raw name of the JCR folder into the HTML markup; thus this
+            can be used to inject arbitrary Javascript.</p>
+
+
+            <p>Mitigation:</p>
+
+
+            <p>This vulnerability only affects systems that use Jackrabbit''s WebDAV
+            component. If this isn''t in use, no immediate action is required. If
+            WebDAV <b>is</b> used, the "DirListingExportHandler" can be disabled by
+            removing the relevant "iohandler" element from config.xml.</p>
+
+
+            <p>(This issue was reported by Lars Krapf)</p>'
+          '@author': reschke
+          '@created': Fri, 26 Feb 2016 09:23:26 +0000
+          '@id': '15168707'
+        - '#text': '<p>trunk: <a href="http://svn.apache.org/r1732436" class="external-link"
+            target="_blank" rel="nofollow noopener">http://svn.apache.org/r1732436</a><br/>
+
+            2.12: <a href="http://svn.apache.org/r1732437" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1732437</a><br/>
+
+            2.10: <a href="http://svn.apache.org/r1732438" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1732438</a><br/>
+
+            2.8: <a href="http://svn.apache.org/r1732439" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1732439</a><br/>
+
+            2.6: <a href="http://svn.apache.org/r1732440" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1732440</a><br/>
+
+            2.4: <a href="http://svn.apache.org/r1732442" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1732442</a><br/>
+
+            2.2: <a href="http://svn.apache.org/r1732446" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1732446</a><br/>
+
+            2.0: <a href="http://svn.apache.org/r1732470" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1732470</a></p>'
+          '@author': reschke
+          '@created': Fri, 26 Feb 2016 09:30:56 +0000
+          '@id': '15168718'
+        - '#text': <p>Close for 2.12.1</p>
+          '@author': edivad
+          '@created': Mon, 29 Feb 2016 11:11:53 +0000
+          '@id': '15171749'
+      component: jackrabbit-jcr-server
+      created: Fri, 26 Feb 2016 09:17:09 +0000
+      customfields:
+        customfield:
+        - '@id': customfield_12310310
+          '@key': com.atlassian.jira.toolkit:attachments
+          customfieldname: Attachment count
+          customfieldvalues:
+            customfieldvalue: '0.0'
+        - '@id': customfield_12314020
+          '@key': com.atlassian.jira.plugins.jira-development-integration-plugin:devsummary
+          customfieldname: Development
+          customfieldvalues: null
+        - '@id': customfield_12313422
+          '@key': com.atlassian.jirafisheyeplugin:jobcheckbox
+          customfieldname: Enable Automatic Patch Review
+          customfieldvalues:
+            customfieldvalue: 'false'
+        - '@id': customfield_12310420
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Global Rank
+          customfieldvalues:
+            customfieldvalue: '9223372036854775807'
+        - '@id': customfield_12312521
+          '@key': com.atlassian.jira.toolkit:LastCommentDate
+          customfieldname: Last public comment date
+          customfieldvalues: 9 years, 15 weeks ago
+        - '@id': customfield_12311820
+          '@key': com.pyxis.greenhopper.jira:gh-lexo-rank
+          customfieldname: Rank
+          customfieldvalues:
+            customfieldvalue: '0|i2tszj:'
+        - '@id': customfield_12310920
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Rank (Obsolete)
+          customfieldvalues:
+            customfieldvalue: '9223372036854775807'
+      description: <p>The XSS vulnerability patched in <a href="https://issues.apache.org/jira/browse/JCR-3630"
+        title="XSS in DirListingExportHandler" class="issue-link" data-issue-key="JCR-3630"><del>JCR-3630</del></a>
+        applies to the parent name (and the repository metadata) as well, thus more
+        needs to be escaped.</p>
+      due: null
+      environment: null
+      fixVersion:
+      - '0.9'
+      - 2.4.6
+      - 2.6.6
+      - 2.10.2
+      - 2.8.2
+      - 2.13.0
+      - 2.12.1
+      - '2.14'
+      issuelinks:
+        issuelinktype:
+          '@id': '10020'
+          name: Cloners
+          outwardlinks:
+            '@description': is a clone of
+            issuelink:
+              issuekey:
+                '#text': JCR-3630
+                '@id': '12659596'
+      key:
+        '#text': JCR-3950
+        '@id': '12944832'
+      labels: null
+      link: https://issues.apache.org/jira/browse/JCR-3950
+      priority:
+        '#text': Major
+        '@iconUrl': https://issues.apache.org/jira/images/icons/priorities/major.svg
+        '@id': '3'
+      project:
+        '#text': Jackrabbit Content Repository
+        '@id': '10591'
+        '@key': JCR
+      reporter:
+        '#text': Julian Reschke
+        '@username': reschke
+      resolution:
+        '#text': Fixed
+        '@id': '1'
+      resolved: Fri, 26 Feb 2016 09:30:56 +0000
+      status:
+        '#text': Closed
+        '@description': The issue is considered finished, the resolution is correct.
+          Issues which are not closed can be reopened.
+        '@iconUrl': https://issues.apache.org/jira/images/icons/statuses/closed.png
+        '@id': '6'
+      statusCategory:
+        '@colorName': green
+        '@id': '3'
+        '@key': done
+      subtasks: null
+      summary: XSS in DirListingExportHandler
+      title: '[JCR-3950] XSS in DirListingExportHandler'
+      type:
+        '#text': Bug
+        '@iconUrl': https://issues.apache.org/jira/secure/viewavatar?size=xsmall&avatarId=21133&avatarType=issuetype
+        '@id': '1'
+      updated: Mon, 26 Aug 2019 08:47:38 +0000
+      version:
+      - 2.0.5
+      - 2.2.13
+      - 2.4.5
+      - 2.6.5
+      - 2.10.1
+      - 2.8.1
+      - 2.12.0
+      votes: '0'
+      watches: '3'
+    language: en-uk
+    link: https://issues.apache.org/jira
+    title: ASF JIRA
