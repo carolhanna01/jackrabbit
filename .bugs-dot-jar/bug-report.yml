@@ -1,0 +1,226 @@
+rss:
+  '@version': '0.92'
+  channel:
+    build-info:
+      build-date: 22-06-2022
+      build-number: '820010'
+      version: 8.20.10
+    description: This file is an XML representation of an issue
+    item:
+      assignee:
+        '#text': Marcel Reutegger
+        '@username': mreutegg
+      attachments:
+        attachment:
+        - '@author': mreutegg
+          '@created': Thu, 21 May 2015 09:13:49 +0000
+          '@id': '12734386'
+          '@name': CVE-2015-1833-jr-2.0.patch
+          '@size': '12859'
+        - '@author': mreutegg
+          '@created': Thu, 21 May 2015 09:13:49 +0000
+          '@id': '12734387'
+          '@name': CVE-2015-1833-jr-2.2.patch
+          '@size': '11113'
+        - '@author': mreutegg
+          '@created': Thu, 21 May 2015 09:13:49 +0000
+          '@id': '12734388'
+          '@name': CVE-2015-1833.patch
+          '@size': '14501'
+        - '@author': reschke
+          '@created': Thu, 21 May 2015 09:42:28 +0000
+          '@id': '12734394'
+          '@name': CVE-2015-1833.txt
+          '@size': '2374'
+      comments:
+        comment:
+        - '#text': <p>Bulk close for 2.10.1</p>
+          '@author': mreutegg
+          '@created': Thu, 21 May 2015 10:17:44 +0000
+          '@id': '14554046'
+        - '#text': '<p>trunk: <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">http://svn.apache.org/r1680757</a><br/>
+
+            2.8: <a href="http://svn.apache.org/r1680785" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1680785</a><br/>
+
+            2.6: <a href="http://svn.apache.org/r1680794" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1680794</a><br/>
+
+            2.4: <a href="http://svn.apache.org/r1680798" class="external-link" target="_blank"
+            rel="nofollow noopener">http://svn.apache.org/r1680798</a></p>'
+          '@author': reschke
+          '@created': Wed, 15 Jun 2016 14:03:09 +0000
+          '@id': '15331796'
+        - '#text': '<p>trunk: (2.10.1) <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680757</a><br/>
+
+            2.20: (2.10.1) <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680757</a><br/>
+
+            2.16: (2.10.1) <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680757</a></p>
+
+
+            <p>...in retired branches:<br/>
+
+            2.18: (2.10.1) <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680757</a><br/>
+
+            2.14: (2.10.1) <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680757</a><br/>
+
+            2.12: (2.10.1) <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680757</a><br/>
+
+            2.10: (2.10.1) <a href="http://svn.apache.org/r1680757" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680757</a><br/>
+
+            2.8: (2.8.2) <a href="http://svn.apache.org/r1680785" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680785</a><br/>
+
+            2.6: (2.6.6) <a href="http://svn.apache.org/r1680794" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680794</a><br/>
+
+            2.4: (2.4.6) <a href="http://svn.apache.org/r1680798" class="external-link"
+            target="_blank" rel="nofollow noopener">r1680798</a><br/>
+
+            2.2: <a href="http://svn.apache.org/r1680800" class="external-link" target="_blank"
+            rel="nofollow noopener">r1680800</a><br/>
+
+            2.0: <a href="http://svn.apache.org/r1680837" class="external-link" target="_blank"
+            rel="nofollow noopener">r1680837</a> <a href="http://svn.apache.org/r1680822"
+            class="external-link" target="_blank" rel="nofollow noopener">r1680822</a></p>'
+          '@author': reschke
+          '@created': Wed, 3 May 2023 09:10:39 +0000
+          '@id': '17718854'
+      component: jackrabbit-webdav
+      created: Thu, 21 May 2015 08:06:10 +0000
+      customfields:
+        customfield:
+        - '@id': customfield_12310310
+          '@key': com.atlassian.jira.toolkit:attachments
+          customfieldname: Attachment count
+          customfieldvalues:
+            customfieldvalue: '4.0'
+        - '@id': customfield_12314020
+          '@key': com.atlassian.jira.plugins.jira-development-integration-plugin:devsummary
+          customfieldname: Development
+          customfieldvalues: null
+        - '@id': customfield_12313422
+          '@key': com.atlassian.jirafisheyeplugin:jobcheckbox
+          customfieldname: Enable Automatic Patch Review
+          customfieldvalues:
+            customfieldvalue: 'false'
+        - '@id': customfield_12310420
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Global Rank
+          customfieldvalues:
+            customfieldvalue: '9223372036854775807'
+        - '@id': customfield_12312521
+          '@key': com.atlassian.jira.toolkit:LastCommentDate
+          customfieldname: Last public comment date
+          customfieldvalues: 2 years, 4 weeks, 5 days ago
+        - '@id': customfield_12311820
+          '@key': com.pyxis.greenhopper.jira:gh-lexo-rank
+          customfieldname: Rank
+          customfieldvalues:
+            customfieldvalue: '0|i2f18n:'
+        - '@id': customfield_12310920
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Rank (Obsolete)
+          customfieldvalues:
+            customfieldvalue: '9223372036854775807'
+      description: '<p>When processing a WebDAV request body containing XML, the XML
+        parser can be <br/>
+
+        instructed to read content from network resources accessible to the host,
+        <br/>
+
+        identified by URI schemes such as "http(s)" or  "file". Depending on the <br/>
+
+        WebDAV request, this can not only be used to trigger internal network <br/>
+
+        requests, but might also be used to insert said content into the request,
+        <br/>
+
+        potentially exposing it to the attacker and others (for instance, by inserting<br/>
+
+        said content in a WebDAV property value using a PROPPATCH request). See also<br/>
+
+        IETF RFC 4918, Section 20.6.</p>
+
+
+        <p>This issue was reported by Mikhail Egorov.</p>
+
+
+        <p>Users of the jackrabbit-webdav module are advised to immediately update
+        the<br/>
+
+        module to 2.10.1 or disable WebDAV access to the repository. Users<br/>
+
+        on earlier versions of Jackrabbit who are unable to upgrade to 2.10.1 should<br/>
+
+        apply the fix to the corresponding 2.x branch or disable WebDAV access until<br/>
+
+        official releases of those earlier versions are available. Patches for 2.x<br/>
+
+        branches are attached to this JIRA issue.</p>'
+      due: null
+      environment: null
+      fixVersion:
+      - '0.9'
+      - 2.10.1
+      - 2.4.6
+      - 2.6.6
+      - 2.8.1
+      key:
+        '#text': JCR-3883
+        '@id': '12831649'
+      labels: null
+      link: https://issues.apache.org/jira/browse/JCR-3883
+      priority:
+        '#text': Critical
+        '@iconUrl': https://issues.apache.org/jira/images/icons/priorities/critical.svg
+        '@id': '2'
+      project:
+        '#text': Jackrabbit Content Repository
+        '@id': '10591'
+        '@key': JCR
+      reporter:
+        '#text': Marcel Reutegger
+        '@username': mreutegg
+      resolution:
+        '#text': Fixed
+        '@id': '1'
+      resolved: Thu, 21 May 2015 09:13:59 +0000
+      status:
+        '#text': Closed
+        '@description': The issue is considered finished, the resolution is correct.
+          Issues which are not closed can be reopened.
+        '@iconUrl': https://issues.apache.org/jira/images/icons/statuses/closed.png
+        '@id': '6'
+      statusCategory:
+        '@colorName': green
+        '@id': '3'
+        '@key': done
+      subtasks: null
+      summary: Jackrabbit WebDAV bundle susceptible to XXE/XEE attack (CVE-2015-1833)
+      title: '[JCR-3883] Jackrabbit WebDAV bundle susceptible to XXE/XEE attack (CVE-2015-1833)'
+      type:
+        '#text': Bug
+        '@iconUrl': https://issues.apache.org/jira/secure/viewavatar?size=xsmall&avatarId=21133&avatarType=issuetype
+        '@id': '1'
+      updated: Wed, 3 May 2023 09:10:39 +0000
+      version:
+      - 2.0.5
+      - 2.2.13
+      - 2.4.5
+      - 2.6.5
+      - '2.8'
+      - '2.10'
+      votes: '0'
+      watches: '1'
+    language: en-uk
+    link: https://issues.apache.org/jira
+    title: ASF JIRA
