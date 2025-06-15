@@ -1,0 +1,109 @@
+rss:
+  '@version': '0.92'
+  channel:
+    build-info:
+      build-date: 22-06-2022
+      build-number: '820010'
+      version: 8.20.10
+    description: This file is an XML representation of an issue
+    item:
+      assignee:
+        '#text': Unassigned
+        '@username': '-1'
+      attachments: null
+      comments:
+        comment:
+        - '#text': '<p>Fixed in revision: 794253</p>'
+          '@author': mreutegg
+          '@created': Wed, 15 Jul 2009 12:58:51 +0000
+          '@id': '12731426'
+        - '#text': <p>Merged to the 1.x branch in revision 800881.</p>
+          '@author': jukkaz
+          '@created': Tue, 4 Aug 2009 17:22:02 +0000
+          '@id': '12739045'
+      component: jackrabbit-core
+      created: Wed, 15 Jul 2009 12:56:24 +0000
+      customfields:
+        customfield:
+        - '@id': customfield_12310310
+          '@key': com.atlassian.jira.toolkit:attachments
+          customfieldname: Attachment count
+          customfieldvalues:
+            customfieldvalue: '0.0'
+        - '@id': customfield_12314020
+          '@key': com.atlassian.jira.plugins.jira-development-integration-plugin:devsummary
+          customfieldname: Development
+          customfieldvalues: null
+        - '@id': customfield_12313422
+          '@key': com.atlassian.jirafisheyeplugin:jobcheckbox
+          customfieldname: Enable Automatic Patch Review
+          customfieldvalues:
+            customfieldvalue: 'false'
+        - '@id': customfield_12310420
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Global Rank
+          customfieldvalues:
+            customfieldvalue: '78301'
+        - '@id': customfield_12312521
+          '@key': com.atlassian.jira.toolkit:LastCommentDate
+          customfieldname: Last public comment date
+          customfieldvalues: 15 years, 47 weeks, 4 days ago
+        - '@id': customfield_12311820
+          '@key': com.pyxis.greenhopper.jira:gh-lexo-rank
+          customfieldname: Rank
+          customfieldvalues:
+            customfieldvalue: '0|i0xbwf:'
+        - '@id': customfield_12310920
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Rank (Obsolete)
+          customfieldvalues:
+            customfieldvalue: '192565'
+      description: <p>Happens when the userId of the session that created the events
+        is null.</p>
+      due: null
+      environment: null
+      fixVersion: '1.6'
+      key:
+        '#text': JCR-2213
+        '@id': '12430494'
+      labels: null
+      link: https://issues.apache.org/jira/browse/JCR-2213
+      priority:
+        '#text': Major
+        '@iconUrl': https://issues.apache.org/jira/images/icons/priorities/major.svg
+        '@id': '3'
+      project:
+        '#text': Jackrabbit Content Repository
+        '@id': '10591'
+        '@key': JCR
+      reporter:
+        '#text': Marcel Reutegger
+        '@username': mreutegg
+      resolution:
+        '#text': Fixed
+        '@id': '1'
+      resolved: Wed, 15 Jul 2009 12:58:51 +0000
+      status:
+        '#text': Closed
+        '@description': The issue is considered finished, the resolution is correct.
+          Issues which are not closed can be reopened.
+        '@iconUrl': https://issues.apache.org/jira/images/icons/statuses/closed.png
+        '@id': '6'
+      statusCategory:
+        '@colorName': green
+        '@id': '3'
+        '@key': done
+      subtasks: null
+      summary: ChangeLogRecord throws NullPointerException
+      title: '[JCR-2213] ChangeLogRecord throws NullPointerException'
+      type:
+        '#text': Bug
+        '@iconUrl': https://issues.apache.org/jira/secure/viewavatar?size=xsmall&avatarId=21133&avatarType=issuetype
+        '@id': '1'
+      updated: Thu, 13 Aug 2009 15:03:48 +0000
+      version: '1.5'
+      votes: '0'
+      watches: '0'
+    language: en-uk
+    link: https://issues.apache.org/jira
+    title: ASF JIRA

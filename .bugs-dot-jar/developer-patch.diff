@@ -1,0 +1,162 @@
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+index 313c6d602..2a8e8b482 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ChangeLogRecord.java
+@@ -114,7 +114,7 @@ public class ChangeLogRecord extends ClusterRecord {
+     /**
+      * Last used session for event sources.
+      */
+-    private Session lastSession;
++    private ClusterSession lastSession;
+ 
+     /**
+      * Create a new instance of this class. Used when serializing.
+@@ -358,7 +358,7 @@ public class ChangeLogRecord extends ClusterRecord {
+      * @return session
+      */
+     private Session getOrCreateSession(String userId) {
+-        if (lastSession == null || !lastSession.getUserID().equals(userId)) {
++        if (lastSession == null || !lastSession.isUserId(userId)) {
+             lastSession = new ClusterSession(userId);
+         }
+         return lastSession;
+diff --git a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java
+index b371d8dd6..071e0f035 100644
+--- a/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java
++++ b/jackrabbit-core/src/main/java/org/apache/jackrabbit/core/cluster/ClusterSession.java
+@@ -55,6 +55,22 @@ class ClusterSession implements Session {
+         this.userId = userId;
+     }
+ 
++    /**
++     * Returns <code>true</code> if the given <code>userId</code> is the same as
++     * the {@link #userId} of this session.
++     *
++     * @param userId the user id or <code>null</code>.
++     * @return <code>true</code> if they are the same; <code>false</code>
++     *         otherwise.
++     */
++    boolean isUserId(String userId) {
++        if (userId == null) {
++            return this.userId == null;
++        } else {
++            return userId.equals(this.userId);
++        }
++    }
++
+     /**
+      * {@inheritDoc}
+      */
+@@ -284,7 +300,7 @@ class ClusterSession implements Session {
+     public boolean equals(Object obj) {
+         if (obj instanceof ClusterSession) {
+             ClusterSession other = (ClusterSession) obj;
+-            return userId.equals(other.userId);
++            return isUserId(other.userId);
+         }
+         return false;
+     }
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/ClusterRecordTest.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/ClusterRecordTest.java
+index 3d71b18e2..0ca7f5efc 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/ClusterRecordTest.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/ClusterRecordTest.java
+@@ -116,6 +116,25 @@ public class ClusterRecordTest extends JUnitTest {
+         assertEquals(listener.getClusterEvents().get(0), update);
+     }
+ 
++    /**
++     * Test producing and consuming an update with a null userId
++     */
++    public void testUpdateOperationWithNullUserId() throws Exception {
++        UpdateEvent update = factory.createUpdateOperationWithNullUserId();
++
++        UpdateEventChannel channel = master.createUpdateChannel(DEFAULT_WORKSPACE);
++        channel.updateCreated(update);
++        channel.updatePrepared(update);
++        channel.updateCommitted(update, null);
++
++        SimpleEventListener listener = new SimpleEventListener();
++        slave.createUpdateChannel(DEFAULT_WORKSPACE).setListener(listener);
++        slave.sync();
++
++        assertEquals(1, listener.getClusterEvents().size());
++        assertEquals(listener.getClusterEvents().get(0), update);
++    }
++
+     /**
+      * Test producing and consuming a lock operation.
+      * @throws Exception
+diff --git a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
+index 3e7c427e4..29d76261a 100644
+--- a/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
++++ b/jackrabbit-core/src/test/java/org/apache/jackrabbit/core/cluster/UpdateEventFactory.java
+@@ -110,10 +110,39 @@ public class UpdateEventFactory {
+         changes.deleted(n3);
+ 
+         List events = new ArrayList();
+-        events.add(createEventState(n1, Event.NODE_ADDED, "{}n1"));
+-        events.add(createEventState(p1, n1, Event.PROPERTY_ADDED));
+-        events.add(createEventState(p2, n2, Event.PROPERTY_REMOVED));
+-        events.add(createEventState(n3, Event.NODE_REMOVED, "{}n3"));
++        events.add(createEventState(n1, Event.NODE_ADDED, "{}n1", session));
++        events.add(createEventState(p1, n1, Event.PROPERTY_ADDED, session));
++        events.add(createEventState(p2, n2, Event.PROPERTY_REMOVED, session));
++        events.add(createEventState(n3, Event.NODE_REMOVED, "{}n3", session));
++
++        return new UpdateEvent(changes, events, System.currentTimeMillis(), "user-data");
++    }
++
++    /**
++     * Create an update operation.
++     *
++     * @return update operation
++     */
++    public UpdateEvent createUpdateOperationWithNullUserId() {
++        NodeState n1 = createNodeState();
++        NodeState n2 = createNodeState();
++        NodeState n3 = createNodeState();
++        PropertyState p1 = createPropertyState(n1.getNodeId(), "{}a");
++        PropertyState p2 = createPropertyState(n2.getNodeId(), "{}b");
++
++        ChangeLog changes = new ChangeLog();
++        changes.added(n1);
++        changes.added(p1);
++        changes.deleted(p2);
++        changes.modified(n2);
++        changes.deleted(n3);
++
++        Session s = new ClusterSession(null);
++        List events = new ArrayList();
++        events.add(createEventState(n1, Event.NODE_ADDED, "{}n1", s));
++        events.add(createEventState(p1, n1, Event.PROPERTY_ADDED, s));
++        events.add(createEventState(p2, n2, Event.PROPERTY_REMOVED, s));
++        events.add(createEventState(n3, Event.NODE_REMOVED, "{}n3", s));
+ 
+         return new UpdateEvent(changes, events, System.currentTimeMillis(), "user-data");
+     }
+@@ -153,9 +182,11 @@ public class UpdateEventFactory {
+      * @param n node state
+      * @param type <code>Event.NODE_ADDED</code> or <code>Event.NODE_REMOVED</code>
+      * @param name node name
++     * @param session the session that produced the event.
+      * @return event state
+      */
+-    protected EventState createEventState(NodeState n, int type, String name) {
++    protected EventState createEventState(NodeState n, int type, String name,
++                                          Session session) {
+         Path.Element relPath = pathFactory.createElement(nameFactory.create(name));
+ 
+         switch (type) {
+@@ -179,9 +210,11 @@ public class UpdateEventFactory {
+      * @param p property state
+      * @param parent parent node state
+      * @param type <code>Event.NODE_ADDED</code> or <code>Event.NODE_REMOVED</code>
++     * @param session the session that produces the event.
+      * @return event state
+      */
+-    protected EventState createEventState(PropertyState p, NodeState parent, int type) {
++    protected EventState createEventState(PropertyState p, NodeState parent, int type,
++                                          Session session) {
+         Path.Element relPath = pathFactory.createElement(p.getName());
+ 
+         switch (type) {
