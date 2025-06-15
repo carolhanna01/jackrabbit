@@ -1,0 +1,138 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] Some problems were encountered while building the effective model for org.apache.jackrabbit:jackrabbit-core:jar:1.6-SNAPSHOT
+[[1;33mWARNING[m] 'parent.relativePath' of POM org.apache.jackrabbit:jackrabbit-parent:1.6-SNAPSHOT (/home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-parent/pom.xml) points at org.apache.jackrabbit:jackrabbit instead of org.apache.jackrabbit:parent, please verify your project structure @ org.apache.jackrabbit:jackrabbit-parent:1.6-SNAPSHOT, /home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-parent/pom.xml, line 30, column 11
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-checkstyle-plugin is missing. @ line 112, column 15
+[[1;33mWARNING[m] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-eclipse-plugin is missing. @ org.apache.jackrabbit:jackrabbit-parent:1.6-SNAPSHOT, /home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-parent/pom.xml, line 131, column 15
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] It is highly recommended to fix these problems because they threaten the stability of your build.
+[[1;33mWARNING[m] 
+[[1;33mWARNING[m] For this reason, future Maven versions might no longer support building such malformed projects.
+[[1;33mWARNING[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m---------------< [0;36morg.apache.jackrabbit:jackrabbit-core[0;1m >----------------[m
+[[1;34mINFO[m] [1mBuilding Jackrabbit Core 1.6-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.3:resources[m [1m(default-resources)[m @ [36mjackrabbit-core[0;1m ---[m
+[[1;33mWARNING[m] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[[1;33mWARNING[m] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[[1;34mINFO[m] Copying 54 resources
+[[1;34mINFO[m] Copying 1 resource
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:2.0.2:compile[m [1m(default-compile)[m @ [36mjackrabbit-core[0;1m ---[m
+[[1;34mINFO[m] Compiling 1 source file to /home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-core/target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.3:testResources[m [1m(default-testResources)[m @ [36mjackrabbit-core[0;1m ---[m
+[[1;33mWARNING[m] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[[1;34mINFO[m] Copying 11 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-antrun-plugin:1.3:run[m [1m(process-test-resources)[m @ [36mjackrabbit-core[0;1m ---[m
+[[1;34mINFO[m] Executing tasks
+     [copy] Copying 5 files to /home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-core/target/repository
+[[1;34mINFO[m] Executed tasks
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:2.0.2:testCompile[m [1m(default-testCompile)[m @ [36mjackrabbit-core[0;1m ---[m
+[[1;34mINFO[m] Compiling 2 source files to /home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-core/target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.4.3:test[m [1m(default-test)[m @ [36mjackrabbit-core[0;1m ---[m
+[[1;34mINFO[m] Surefire report directory: /home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-core/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.apache.jackrabbit.core.observation.TestAll
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.42 sec
+Running org.apache.jackrabbit.core.query.TestAll
+Tests run: 146, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.061 sec
+Running org.apache.jackrabbit.core.nodetype.TestAll
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec
+Running org.apache.jackrabbit.core.security.authorization.combined.TestAll
+Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec
+Running org.apache.jackrabbit.core.security.authorization.TestAll
+Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 sec
+Running org.apache.jackrabbit.core.retention.TestAll
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 sec
+Running org.apache.jackrabbit.core.query.qom.TestAll
+Tests run: 157, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.501 sec
+Running org.apache.jackrabbit.core.util.TestAll
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec
+Running org.apache.jackrabbit.api.security.principal.TestAll
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec
+Running org.apache.jackrabbit.api.jsr283.version.simple.TestAll
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.239 sec
+Running org.apache.jackrabbit.api.jsr283.retention.TestAll
+Tests run: 50, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.24 sec
+Running org.apache.jackrabbit.core.query.lucene.directory.TestAll
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec
+Running org.apache.jackrabbit.core.lock.TestAll
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 sec
+Running org.apache.jackrabbit.api.jsr283.security.TestAll
+Tests run: 78, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.196 sec
+Running org.apache.jackrabbit.core.security.principal.TestAll
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+Running org.apache.jackrabbit.core.TestAll
+Tests run: 102, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.309 sec
+Running org.apache.jackrabbit.core.config.TestAll
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 sec
+Running org.apache.jackrabbit.api.jsr283.lock.TestAll
+Tests run: 76, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.474 sec
+Running org.apache.jackrabbit.core.query.lucene.TestAll
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.069 sec
+Running org.apache.jackrabbit.core.nodetype.xml.TestAll
+Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 sec
+Running org.apache.jackrabbit.core.version.TestAll
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.29 sec
+Running org.apache.jackrabbit.core.nodetype.compact.TestAll
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec
+Running org.apache.jackrabbit.core.journal.TestAll
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec
+Running org.apache.jackrabbit.api.security.user.TestAll
+Tests run: 81, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec
+Running org.apache.jackrabbit.api.jsr283.TestAll
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 sec
+Running org.apache.jackrabbit.core.security.TestAll
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec
+Running org.apache.jackrabbit.core.cluster.TestAll
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec
+Running org.apache.jackrabbit.core.data.TestAll
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.149 sec
+Running org.apache.jackrabbit.core.security.authorization.principalbased.TestAll
+Tests run: 77, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 sec
+Running org.apache.jackrabbit.core.security.user.TestAll
+Tests run: 94, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 sec
+Running org.apache.jackrabbit.core.security.authorization.acl.TestAll
+Tests run: 72, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec
+Running org.apache.jackrabbit.core.state.TestAll
+Tests run: 15, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 3.255 sec <<< FAILURE!
+Running org.apache.jackrabbit.core.xml.TestAll
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec
+Running org.apache.jackrabbit.api.jsr283.observation.TestAll
+Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.596 sec
+Running org.apache.jackrabbit.core.security.authentication.TestAll
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec
+
+Results :
+
+Failed tests: 
+  testEquals(org.apache.jackrabbit.core.state.NameSetTest)
+  testHashCode(org.apache.jackrabbit.core.state.NameSetTest)
+
+Tests run: 1205, Failures: 2, Errors: 0, Skipped: 0
+
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  42.214 s
+[[1;34mINFO[m] Finished at: 2025-06-15T12:58:23+01:00
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.apache.maven.plugins:maven-surefire-plugin:2.4.3:test[m [1m(default-test)[m on project [36mjackrabbit-core[m: [1;31mThere are test failures.[m
+[[1;31mERROR[m] [1;31m[m
+[[1;31mERROR[m] [1;31mPlease refer to /home/carol/Downloads/Workspaces/bugs-dot-jar/jackrabbit/jackrabbit-core/target/surefire-reports for the individual test results.[m
+[[1;31mERROR[m] -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

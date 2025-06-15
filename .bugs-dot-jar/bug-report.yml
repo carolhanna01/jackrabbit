@@ -1,0 +1,142 @@
+rss:
+  '@version': '0.92'
+  channel:
+    build-info:
+      build-date: 22-06-2022
+      build-number: '820010'
+      version: 8.20.10
+    description: This file is an XML representation of an issue
+    item:
+      assignee:
+        '#text': Unassigned
+        '@username': '-1'
+      attachments: null
+      comments:
+        comment:
+        - '#text': '<p>Fixed as proposed and added test case in revision: 768218</p>'
+          '@author': mreutegg
+          '@created': Fri, 24 Apr 2009 08:12:03 +0000
+          '@id': '12702280'
+        - '#text': '<p>Can this fix be applied to the 1.5 branch as well?<br/>
+
+            We''re running into merge failures as a result of this issue, so backporting
+            would be very appreciated <img class="emoticon" src="https://issues.apache.org/jira/images/icons/emoticons/smile.png"
+            height="16" width="16" align="absmiddle" alt="" border="0"/></p>
+
+
+            <p>thanks, Frank</p>'
+          '@author': lankvelt
+          '@created': Wed, 20 May 2009 14:39:08 +0000
+          '@id': '12711165'
+        - '#text': <p>Sure, merged to the 1.5 branch in revision 776771.</p>
+          '@author': jukkaz
+          '@created': Wed, 20 May 2009 17:24:58 +0000
+          '@id': '12711244'
+      component: jackrabbit-core
+      created: Fri, 24 Apr 2009 04:29:24 +0000
+      customfields:
+        customfield:
+        - '@id': customfield_12310310
+          '@key': com.atlassian.jira.toolkit:attachments
+          customfieldname: Attachment count
+          customfieldvalues:
+            customfieldvalue: '0.0'
+        - '@id': customfield_12314020
+          '@key': com.atlassian.jira.plugins.jira-development-integration-plugin:devsummary
+          customfieldname: Development
+          customfieldvalues: null
+        - '@id': customfield_12313422
+          '@key': com.atlassian.jirafisheyeplugin:jobcheckbox
+          customfieldname: Enable Automatic Patch Review
+          customfieldvalues:
+            customfieldvalue: 'false'
+        - '@id': customfield_12310420
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Global Rank
+          customfieldvalues:
+            customfieldvalue: '78335'
+        - '@id': customfield_12312521
+          '@key': com.atlassian.jira.toolkit:LastCommentDate
+          customfieldname: Last public comment date
+          customfieldvalues: 16 years, 6 weeks, 3 days ago
+        - '@id': customfield_12311820
+          '@key': com.pyxis.greenhopper.jira:gh-lexo-rank
+          customfieldname: Rank
+          customfieldvalues:
+            customfieldvalue: '0|i0wxhr:'
+        - '@id': customfield_12310920
+          '@key': com.pyxis.greenhopper.jira:gh-global-rank
+          customfieldname: Rank (Obsolete)
+          customfieldvalues:
+            customfieldvalue: '190231'
+      description: "<p>The merge context uses the NameSet.equals(NameSet) method to\
+        \ compare two sets; however, the NameSet class does not override the default\
+        \ Object.equals(Object) method, and does not inherit from AbstractSet&lt;E&gt;.\
+        \  Therefore, the merge check fails, even though the mixin sets are the same.\
+        \  Object instance equivalence is being performed as opposed to set equivalence.\
+        \  Behavior is observed when more than one thread is checking the ISM at a\
+        \ given time.  Demonstration code available upon request.</p>\n\n<p>From NodeStateMerger,\
+        \ line 83:<br/>\n                // mixin types<br/>\n                if (!state.getMixinTypeNames().equals(overlayedState.getMixinTypeNames()))\
+        \ </p>\n{\n                    // the mixins have been modified but by just\
+        \ looking at the diff we\n                    // can't determine where the\
+        \ change happened since the diffs of either\n                    // removing\
+        \ a mixin from the overlayed or adding a mixin to the\n                  \
+        \  // transient state would look identical...\n                    return\
+        \ false;\n                }\n\n<p>Proposed solution:</p>\n<ul class=\"alternate\"\
+        \ type=\"square\">\n\t<li>Implement NameSet.equals(...) method:<br/>\n\tpublic\
+        \ boolean equals(Object obj) \n<div class=\"error\"><span class=\"error\"\
+        >Unknown macro: {\t\tif (obj != null &amp;&amp; obj instanceof NameSet) {\n\
+        \t\t\tNameSet oo = (NameSet) obj;\n\t\t\treturn oo.names.equals(this.names);\n\
+        \t\t}\t\treturn false;\t}</span> </div></li>\n</ul>"
+      due: null
+      environment: 'org.apache.jackrabbit.core.state.SharedItemStateManager:begin()<br/>
+
+        org.apache.jackrabbit.core.state.NameSet:equals(Object)<br/>
+
+        org.apache.jackrabbit.core.state.NodeStateMerger:merge(NodeState,MergeContext)'
+      fixVersion: 1.5.6
+      key:
+        '#text': JCR-2081
+        '@id': '12423653'
+      labels: null
+      link: https://issues.apache.org/jira/browse/JCR-2081
+      priority:
+        '#text': Critical
+        '@iconUrl': https://issues.apache.org/jira/images/icons/priorities/critical.svg
+        '@id': '2'
+      project:
+        '#text': Jackrabbit Content Repository
+        '@id': '10591'
+        '@key': JCR
+      reporter:
+        '#text': Damon A. Brown
+        '@username': dab5879
+      resolution:
+        '#text': Fixed
+        '@id': '1'
+      resolved: Fri, 24 Apr 2009 08:12:04 +0000
+      status:
+        '#text': Closed
+        '@description': The issue is considered finished, the resolution is correct.
+          Issues which are not closed can be reopened.
+        '@iconUrl': https://issues.apache.org/jira/images/icons/statuses/closed.png
+        '@id': '6'
+      statusCategory:
+        '@colorName': green
+        '@id': '3'
+        '@key': done
+      subtasks: null
+      summary: NameSet does not implement equals(Object) and hashCode() methods
+      title: '[JCR-2081] NameSet does not implement equals(Object) and hashCode()
+        methods'
+      type:
+        '#text': Bug
+        '@iconUrl': https://issues.apache.org/jira/secure/viewavatar?size=xsmall&avatarId=21133&avatarType=issuetype
+        '@id': '1'
+      updated: Tue, 9 Jun 2009 15:22:31 +0000
+      version: 1.5.4
+      votes: '0'
+      watches: '0'
+    language: en-uk
+    link: https://issues.apache.org/jira
+    title: ASF JIRA
