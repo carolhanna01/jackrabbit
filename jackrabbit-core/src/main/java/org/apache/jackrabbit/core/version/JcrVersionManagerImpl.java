@@ -46,6 +46,11 @@ import org.slf4j.Logger;
  */
 public class JcrVersionManagerImpl implements javax.jcr.version.VersionManager {
 
+    @Override
+    public VersionHistory createConfiguration(String workspaceName) throws RepositoryException {
+        throw new UnsupportedOperationException("createConfiguration is not supported in this version.");
+    }
+
     /**
      * default logger
      */

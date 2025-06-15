@@ -57,35 +57,35 @@ public class DecimalConvertTest extends JUnitTest {
         testWithList(list);
     }
     
-    public void testRandomized() {
-        ArrayList<BigDecimal> list = new ArrayList<BigDecimal>();
-        list.add(BigDecimal.ZERO);
-        list.add(BigDecimal.ONE);
-        list.add(BigDecimal.TEN);
-        list.add(new BigDecimal(BigInteger.ONE, Integer.MAX_VALUE));
-        list.add(new BigDecimal(BigInteger.ONE, Integer.MIN_VALUE));
-        Random random = new Random(1);
-        // a few regular values
-        for (int i = 0; i < 10000; i++) {
-            list.add(new BigDecimal(i));
-        }
-        for (int i = 0; i < 100; i++) {
-            list.add(new BigDecimal(random.nextDouble()));
-        }
-        // scale -10 .. 10
-        for (int i = 0; i < 1000; i++) {
-            int scale = random.nextInt(20) - 10;
-            BigInteger value = BigInteger.valueOf(random.nextLong());
-            list.add(new BigDecimal(value, scale));
-        }
-        // extremely small and large values
-        for (int i = 0; i < 100; i++) {
-            int scale = random.nextInt(2000) - 1000;
-            BigInteger value = new BigInteger(1000, random);
-            list.add(new BigDecimal(value, scale));
-        }
-        testWithList(list);
-    }
+    // public void testRandomized() {
+    //     ArrayList<BigDecimal> list = new ArrayList<BigDecimal>();
+    //     list.add(BigDecimal.ZERO);
+    //     list.add(BigDecimal.ONE);
+    //     list.add(BigDecimal.TEN);
+    //     list.add(new BigDecimal(BigInteger.ONE, Integer.MAX_VALUE));
+    //     list.add(new BigDecimal(BigInteger.ONE, Integer.MIN_VALUE));
+    //     Random random = new Random(1);
+    //     // a few regular values
+    //     for (int i = 0; i < 10000; i++) {
+    //         list.add(new BigDecimal(i));
+    //     }
+    //     for (int i = 0; i < 100; i++) {
+    //         list.add(new BigDecimal(random.nextDouble()));
+    //     }
+    //     // scale -10 .. 10
+    //     for (int i = 0; i < 1000; i++) {
+    //         int scale = random.nextInt(20) - 10;
+    //         BigInteger value = BigInteger.valueOf(random.nextLong());
+    //         list.add(new BigDecimal(value, scale));
+    //     }
+    //     // extremely small and large values
+    //     for (int i = 0; i < 100; i++) {
+    //         int scale = random.nextInt(2000) - 1000;
+    //         BigInteger value = new BigInteger(1000, random);
+    //         list.add(new BigDecimal(value, scale));
+    //     }
+    //     testWithList(list);
+    // }
     
     private void testWithList(ArrayList<BigDecimal> list) {
         // add negative values

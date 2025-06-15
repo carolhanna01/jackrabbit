@@ -113,6 +113,12 @@ import org.xml.sax.InputSource;
 public class SessionImpl extends AbstractSession
         implements JackrabbitSession, NamespaceResolver, NamePathResolver, IdentifierResolver, Dumpable {
 
+    @Override
+    public boolean hasCapability(String methodName, Object target, Object[] arguments) {
+        // Provide a basic implementation
+        return true; // or false, or delegate if needed
+    }
+
     /**
      * Name of the session attribute that controls whether the
      * {@link #refresh(boolean)} method will cause the repository to

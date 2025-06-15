@@ -57,6 +57,12 @@ import java.util.Map;
  */
 public final class JCASessionHandle implements XASession {
 
+    @Override
+    public boolean hasCapability(String methodName, Object target, Object[] arguments) {
+        // You can return false if unsure; it's usually safe in mocks/adapters
+        return false;
+    }
+
     /**
      * Managed connection.
      */

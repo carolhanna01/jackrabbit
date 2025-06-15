@@ -41,6 +41,12 @@ import org.xml.sax.ContentHandler;
  */
 class ClusterSession implements Session {
 
+    @Override
+    public boolean hasCapability(String methodName, Object target, Object[] arguments) {
+        // Provide fallback logic, or return a fixed value
+        return true; // or false
+    }
+
     /**
      * User id to represent.
      */

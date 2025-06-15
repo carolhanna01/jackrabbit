@@ -91,6 +91,11 @@ public class JsonDiffHandlerTest extends TestCase {
 
     private final class DummySession implements Session {
 
+        @Override
+        public boolean hasCapability(String methodName, Object target, Object[] arguments) {
+            return false; // or true — depending on what the test expects
+        }
+
         public Repository getRepository() {
             return null;
         }
