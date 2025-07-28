@@ -42,22 +42,6 @@ index 31f4268f1..109a73536 100644
              }
          }
          if (buf == null) {
-diff --git a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
-index 0bb52ba38..1375aff26 100644
---- a/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
-+++ b/jackrabbit-jcr-commons/src/test/java/org/apache/jackrabbit/util/TextTest.java
-@@ -195,4 +195,11 @@ public class TextTest extends TestCase {
-         assertEquals("local\"name", Text.escapeIllegalJcrChars("local\"name"));
-     }
- 
-+    public void testEscapeXML() {
-+        assertEquals("&amp;&lt;&gt;&apos;&quot;", Text.encodeIllegalXMLCharacters("&<>'\""));
-+    }
-+
-+    public void testEscapeHTML() {
-+        assertEquals("&amp;&lt;&gt;&#39;&quot;", Text.encodeIllegalHTMLCharacters("&<>'\""));
-+    }
- }
 diff --git a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/DirListingExportHandler.java b/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/DirListingExportHandler.java
 index dc3516b21..73fdfbe0f 100644
 --- a/jackrabbit-jcr-server/src/main/java/org/apache/jackrabbit/server/io/DirListingExportHandler.java
